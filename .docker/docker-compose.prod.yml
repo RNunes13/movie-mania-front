@@ -1,0 +1,4 @@
+version: '3.7'
+services: 
+  movie_mania_front:
+    command: ["npm", "run", "start"]
