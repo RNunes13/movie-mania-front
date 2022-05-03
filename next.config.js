@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
 
-module.exports = nextConfig
+module.exports = {
+  reactStrictMode: true,
+  productionBrowserSourceMaps: false,
+  webpack5: true,
+  images: {
+    domains: ['image.tmdb.org'],
+  }
+}
