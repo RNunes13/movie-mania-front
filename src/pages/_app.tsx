@@ -1,12 +1,27 @@
-import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ThemeProvider } from 'styled-components'
 import { appWithTranslation } from 'next-i18next'
 
+import type { NextPage } from 'next'
+import type { AppProps } from 'next/app'
+import type { ReactElement, ReactNode } from 'react'
+
 import { theme } from 'theme'
 import { GlobalStyle } from 'theme/GlobalStyle'
 
-const App = ({ Component, pageProps }: AppProps) => {
+import Layout from 'src/components/Layout/Layout'
+
+export type NextPageWithLayout = NextPage & {
+  getLayout?: (page: ReactElement) => ReactNode
+}
+
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout
+}
+
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+  const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>)
+
   return (
     <>
       <Head>
@@ -14,7 +29,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        { getLayout(<Component {...pageProps} />) }
       </ThemeProvider>
     </>
   )
