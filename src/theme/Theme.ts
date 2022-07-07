@@ -54,7 +54,7 @@ interface IFontsProps {
 
 interface IThemeProps {
   colors: IColorsProps;
-  spacing: ISpacingProps;
+  spaces: ISpacingProps;
   breakpoints: IBreakpointsProps;
   fonts: IFontsProps;
 }
@@ -68,14 +68,14 @@ const theme: IThemeProps = {
     pacificBlue: '#048be0',
 
     base_100: '#000000',
-    base_80: '#5a5a5a',
+    base_80: '#2b2b31',
     base_60: '#858585',
     base_40: '#b3b3b3',
     base_20: '#ebebeb',
     base_10: '#f4f4f4',
     base_0: '#FFFFFF',
   },
-  spacing: {
+  spaces: {
     space1: '10px',
     space2: '20px',
     space3: '30px',
