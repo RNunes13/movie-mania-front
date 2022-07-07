@@ -1,4 +1,4 @@
-import { render } from 'utils/test-utils';
+import { render } from 'src/util/test-utils'
 
 import Layout, { ILayout } from '../Layout'
 
@@ -27,5 +27,5 @@ describe('Layout', () => {
       const { getByTestId } = setupComponent({ children })
       expect(getByTestId('page-children')).toBeInTheDocument()
     })
-  });
-});
+  })
+})
