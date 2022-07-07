@@ -1,18 +1,18 @@
 import { render } from 'utils/test-utils';
 
-import Page, { IPage } from '../Page'
+import Layout, { ILayout } from '../Layout'
 
-const defaultProps: IPage = {
+const defaultProps: ILayout = {
   children: <></>
 }
 
 const setupComponent = (props = {}) => (
-  render(<Page {...defaultProps} { ...props } />)
+  render(<Layout {...defaultProps} { ...props } />)
 )
 
-describe('Page', () => {
+describe('Layout', () => {
   describe('renders as expected', () => {
-    it('renders the `Page`', () => {
+    it('renders the `Layout`', () => {
       const { getByTestId } = setupComponent()
       expect(getByTestId('page')).toBeInTheDocument()
     })

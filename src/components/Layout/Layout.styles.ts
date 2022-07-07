@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { mixins } from 'theme'
 
-export const Page = styled.div`
+export const Layout = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
