@@ -31,6 +31,12 @@ interface IColorsProps {
   base_0: string;
 }
 
+interface IZindexProps {
+  base: number;
+  top: number;
+  modal: number;
+}
+
 interface ISpacingProps {
   space1: string;
   space2: string;
@@ -54,6 +60,7 @@ interface IFontsProps {
 
 interface IThemeProps {
   colors: IColorsProps;
+  index: IZindexProps;
   spaces: ISpacingProps;
   breakpoints: IBreakpointsProps;
   fonts: IFontsProps;
@@ -74,6 +81,11 @@ const theme: IThemeProps = {
     base_20: '#ebebeb',
     base_10: '#f4f4f4',
     base_0: '#FFFFFF',
+  },
+  index: {
+    base: 0,
+    top: 10,
+    modal: 100,
   },
   spaces: {
     space1: '10px',

@@ -2,14 +2,12 @@ import styled from 'styled-components'
 import { mixins } from 'src/theme'
 
 export const Container = styled.div`
-  padding: 0 2rem;
-  height: 100%;
-  padding: 4rem 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   flex: 1;
+  height: 100%;
 `
 
 export const Title = styled.h1`
