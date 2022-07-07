@@ -12,9 +12,13 @@ const customJestConfig = {
     '<rootDir>/.next/',
     '<rootDir>/node_modules/',
   ],
+  setupFiles: [
+    '<rootDir>/__mocks__/common.js'
+  ],
   moduleNameMapper: {
-    "utils/(.*)$": "<rootDir>/src/utils/$1",
+    "util/(.*)$": "<rootDir>/src/util/$1",
     "theme(.*)$": "<rootDir>/src/theme/$1",
+    "components/(.*)$": "<rootDir>/src/components/$1",
   }
 };
 

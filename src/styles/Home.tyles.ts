@@ -18,6 +18,7 @@ export const Title = styled.h1`
   line-height: 1.15;
   font-size: 3rem;
   text-align: center;
+  color: ${({ theme }) => theme.colors.base_0};
   
   ${mixins.isDesktop()} {
     font-size: 4rem;

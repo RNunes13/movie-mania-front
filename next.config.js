@@ -8,5 +8,10 @@ module.exports = {
   webpack5: true,
   images: {
     domains: ['image.tmdb.org'],
+  },
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
   }
 }
