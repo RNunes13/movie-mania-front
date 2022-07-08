@@ -18,7 +18,7 @@ export const getParams = (searchRaw = ''): qs.ParsedQs => {
   return search
 }
 
-const getLocale = (): string => {
+export const getLocale = (): string => {
   const { pathname }: any = typeof window !== 'undefined' ? window.location : {}
   const firstPath = (pathname || '').substring(1).split('/')[0]
   const locale = locales.includes(firstPath) ? firstPath : defaultLocale
@@ -26,7 +26,7 @@ const getLocale = (): string => {
   return locale
 }
 
-const resolveSearchParams = (uri: RequestInfo): string => {
+export const resolveSearchParams = (uri: RequestInfo): string => {
   const { search } = new URL(uri.toString())
   const params = getParams(search)
   const locale = getLocale()
@@ -38,6 +38,7 @@ const resolveSearchParams = (uri: RequestInfo): string => {
   return qs.stringify(Object.assign({}, defaultParams, params))
 }
 
+// istanbul ignore next
 const customFetch = throttledFetch(async (uri: RequestInfo, options: RequestInit) => {
   const params = resolveSearchParams(uri)
   const url = `${uri.toString().split('?')[0]}?${params}`
@@ -58,13 +59,15 @@ const customFetch = throttledFetch(async (uri: RequestInfo, options: RequestInit
   return res
 })
 
-export const error = onError(({ graphQLErrors, networkError, operation, forward }) => {
+export const error = onError(({ graphQLErrors, networkError }) => {
+  // istanbul ignore next
   if (graphQLErrors) {
     graphQLErrors.forEach(({ message, locations, path, extensions: { code }}) => {
       console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}, Code: ${code}`)
     })
   }
 
+  // istanbul ignore next
   if (networkError) {
     console.log(`[Network error]: ${JSON.stringify(networkError)}`)
   }
@@ -73,5 +76,5 @@ export const error = onError(({ graphQLErrors, networkError, operation, forward 
 export const rest = new RestLink({
   customFetch,
   uri: process.env.NEXT_PUBLIC_APP_BFF,
-  fieldNameNormalizer: (key) => camelCase(key),
+  fieldNameNormalizer: /* istanbul ignore next */ (key) => camelCase(key),
 })
